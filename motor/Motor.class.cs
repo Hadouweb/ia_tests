@@ -48,7 +48,7 @@ public class Motor
 				}
 			}
 
-			// On a un fait eb base, on vérfie sa valeur
+			// On a un fait en base, on vérfie sa valeur
 			if (!foundFact.Value().Equals(f.Value()))
 			{
 				// Elle ne correspond pas
@@ -75,5 +75,75 @@ public class Motor
 			}
 		}
 		return null;
+	}
+
+	public void Solve()
+	{
+		// On fait une copie des règle existantes
+		// + création d'une base de faits vierge
+		bool moreRules = true;
+		RulesBase usableRules = new RulesBase();
+		usableRules.Rules = new List<Rule>(rDB.Rules);
+		fDB.Clear();
+
+		// Tant qu'il existe des règles à appliquer
+		while (moreRules)
+		{
+			// Cherche une règle à appeler
+			Tuple<Rule, int> t = FindUsableRule(usableRules);
+
+			if (t != null)
+			{
+				// Applique la règle et ajoute le nouveau fait
+				// à la base
+				IFact newFact = t.Item1.Conclusion;
+				newFact.SetLevel(t.Item2 + 1);
+				fDB.AddFact(newFact);
+
+				// Enlève la règle des règles applicables
+				usableRules.Remove(t.Item1);
+			}
+			else
+			{
+				// PLus de règles possible : on s'arrête
+				moreRules = false;
+			}
+		}
+
+		// Ecriture du résultat
+		ihm.PrintFacts(fDB.Facts);
+	}
+
+	public void AddRule(string ruleStr)
+	{
+		// Séparation nom : règle
+		String[] splitName = ruleStr.Split(new String[] {" : "},
+			StringSplitOptions.RemoveEmptyEntries);
+		if (splitName.Length == 2)
+		{
+			String name = splitName[0];
+			// Séparation premisses THEN conclusion
+			String[] splitPremConcl = splitName[1].Split(new String[] 
+				{ "IF ", ", ", " THEN " }, StringSplitOptions.RemoveEmptyEntries);
+			if (splitPremConcl.Length == 2)
+			{
+				// Lecture des premisses
+				List<IFact> premises = new List<IFact>();
+				String[] premisesStr = splitPremConcl[0].Split(new String[] {" AND "}, 
+					StringSplitOptions.RemoveEmptyEntries);
+				foreach (String prem in premisesStr)
+				{
+					IFact premise = FactFactory.Fact(prem);
+					premises.Add(premise);
+				}
+
+				// Lecture de la conclusion
+				String conclusionStr = splitPremConcl[1].Trim();
+				IFact conclusion = FactFactory.Fact(conclusionStr);
+
+				// Création de la règle et ajout
+				rDB.AddRule(new Rule(name, premises, conclusion));
+			}
+		}
 	}
 }

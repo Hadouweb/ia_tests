@@ -30,7 +30,7 @@ internal class RulesBase
 		rules.Add(r);
 	}
 
-	public void remove(Rule r)
+	public void Remove(Rule r)
 	{
 		rules.Remove(r);
 	}
