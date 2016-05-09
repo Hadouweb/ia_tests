@@ -43,12 +43,10 @@ nom(carre) :-
 	nom(losange),
 	nom(rectangle).
 
+memory(Pred, X).
 :- dynamic, memory/2.
 
-memory(Pred, _).
-
 ask(Pred, _, X) :-
-	dynamic, memory/2,
 	memory(Pred, X).
 
 ask(Pred, _, _) :-
