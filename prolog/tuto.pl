@@ -44,7 +44,6 @@ nom(carre) :-
 	nom(rectangle).
 
 memory(Pred, X).
-:- dynamic, memory/2.
 
 ask(Pred, _, X) :-
 	memory(Pred, X).
