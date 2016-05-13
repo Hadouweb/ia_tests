@@ -1,7 +1,7 @@
 public class TriangularFuzzySet : FuzzySet
 {
-	public TriangularFuzzySet(double min, double max, double TriangleBegin,
-		double triangkeCenter, double triangleEnd) : base(mine, max)
+	public TriangularFuzzySet(double min, double max, double triangleBegin,
+		double triangleCenter, double triangleEnd) : base(min, max)
 	{
 		Add(new Point2D(min, 0));		
 		Add(new Point2D(triangleBegin, 0));

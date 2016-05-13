@@ -21,12 +21,12 @@ public class FuzzyRule
 			LinguisticValue val = null;
 			foreach (FuzzyValue pb in Problem)
 			{
-				if (premise.Lv == pv.Lv)
+				if (premise.Lv == pb.Lv)
 				{
 					val = premise.Lv.LinguisticValueByName(premise.LinguisticValueName);
 					if (val != null)
 					{
-						localDegree = val.DegreeAtValue(pv.Value);
+						localDegree = val.DegreeAtValue(pb.Value);
 						break;
 					}
 				}

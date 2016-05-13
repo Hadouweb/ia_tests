@@ -3,7 +3,7 @@ using System;
 public class FuzzyExpression
 {
 	internal LinguisticVariable Lv { get; set; }
-	internal String LguisticValueName { get; set; }
+	internal String LinguisticValueName { get; set; }
 
 	public FuzzyExpression(LinguisticVariable _lv, String _value)
 	{

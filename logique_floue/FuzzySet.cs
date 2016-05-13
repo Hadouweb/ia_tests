@@ -89,7 +89,7 @@ public class FuzzySet
 				if (x1 < x2)
 				{
 					oldPt1 = enum1.Current;
-					endofList1 = !(enum1.MoveNext());
+					endOfList1 = !(enum1.MoveNext());
 				}
 				else if (x1 > x2)
 				{
@@ -133,7 +133,7 @@ public class FuzzySet
 			while (!endOfList2)
 			{
 				result.Add(enum2.Current.X, MergeFt(0, enum2.Current.Y));
-				endoOfList2 = !(enum2.MoveNext());
+				endOfList2 = !(enum2.MoveNext());
 			}
 		}
 
@@ -152,7 +152,7 @@ public class FuzzySet
 
 	public static FuzzySet operator *(FuzzySet fs, double value)
 	{
-		FuzzySet result = new FuzzySet(fs.min, fs.Max);
+		FuzzySet result = new FuzzySet(fs.Min, fs.Max);
 		foreach (Point2D pt in fs.Points)
 		{
 			result.Add(new Point2D(pt.X, pt.Y * value));;

@@ -5,10 +5,10 @@ public class LinguisticVariable
 {
 	internal String Name { get; set; }
 	List<LinguisticValue> Values { get; set; }
-	internal Double minValue { get; set; }
+	internal Double MinValue { get; set; }
 	internal Double MaxValue { get; set; }
 
-	public LinguisticVariable(String _name; double _min, double _max)
+	public LinguisticVariable(String _name, double _min, double _max)
 	{
 		Values = new List<LinguisticValue>();
 		Name = _name;
