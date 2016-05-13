@@ -311,6 +311,65 @@ namespace FuzzyLogicPCL.FuzzySets
                 }
             }
 
+            public double Centroid()
+            {
+                // S'il y a moins de deux points, il n'y a as de centroïde
+                if (Points.Count < 2)
+                {
+                    return 0;
+                }
+                else
+                {
+                    // On Initialise l'aire pondérée et l'aire totale
+                    double ponderatedArea = 0;
+                    double totalArea = 0;
+                    double localArea;
+                    Point2D oldPt = null;
+                    // On va parcourir chaque points (ordPt et newPt)
+                    // qui délimitent une forme
+                    foreach (Point2D newPt in Points)
+                    {
+                        if (ordPt != null)
+                        {
+                            // Calcul du controïde local
+                            if (oldPt.Y == newPt.Y)
+                            {
+                                // C'est un rectangle (même hauteur) donc au centre
+                                localArea = oldPt.Y * (newPt.X - oldPt.X);
+                                totalArea += localArea;
+                                ponderated += ((newPt.X - oldPt.X) / 2 + oldPt.X) * localArea;
+                            }
+                            else
+                            {
+                                // On a une forme qui est composée d'un rectangle
+                                // dessous et d'un triangle rectangle dessus.
+                                // On va faire forme par forme
+                                // pour le rectangle :
+                                localArea = Math.Min(oldPt.Y, newPt.Y) * (newPt.X, oldPt.X);
+                                totalArea += localArea;
+                                penderatedArea += ((newPt.X - oldPt.X) / 2 + oldPt.x) * localArea;
+                                // Pour le triangle (centroïde à 1/3, du côté de
+                                // l'angle droit)
+                                localArea = (newPt.X - oldPt.X) * (Math.Abs(newPt.Y - oldPt.Y)) / 2;
+                                totalArea += localArea;
+                                if (newPt.Y > oldPt.Y)
+                                {
+                                    penderatedArea += (2.0 / 3.0 * (newPt.X - oldPt.X) + oldPt.X) * localArea;
+                                }
+                                else
+                                {
+                                    penderatedArea += (1.0 / 3.0 * (newPt.X - oldPt.X) + oldPt.X) * localArea;
+                                }
+                            }
+                        }
+                        oldPt = newPt;
+                    }
+                    // On renvoie la coordonnée du centroïde qui est la somme
+                    // pondérée divisiée par l'aire totale
+                    return ponderatedArea / totalArea;
+                }
+            }
+
             // Add end points
             if (!endOfList1)
             {
