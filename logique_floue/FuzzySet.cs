@@ -4,6 +4,38 @@ using System.Linq;
 
 public class FuzzySet
 {
+	protected List<Point2D> Points;
+	protected double Min { get; set; }
+	protected double Max { get; set; }
+
+	public FuzzySet(double min, double max)
+	{
+		this.Points = new List<Point2D>();
+		this.Min = min;
+		this.Max = max;
+	}
+
+	public void Add(Point2D pt)
+	{
+		Points.Add(pt);
+		Points.Sort();
+	}
+
+	public void Add(double x, double y)
+	{
+		Point2D pt = new Point2D(x, y);
+		Add(pt);
+	}
+
+	public override String ToString()
+	{
+		String result = "[" + Min + "-" + Max + "]:";
+		foreach (Point2D pt in Points)
+		{
+			result += pt.ToString(); // Revient à "(" + pt.X + ";" + pt.Y + ")";
+		}
+		return result;
+	}
 
 	private static FuzzySet Merge(FuzzySet fs1, FuzzySet fs2,
 		Func<double, double, double> MergeFt)
@@ -17,7 +49,7 @@ public class FuzzySet
 		List<Point2D>.Enumerator enum2 = fs2.Points.GetEnumerator();
 		enum1.MoveNext();
 		enum2.MoveNext();
-		Point2D oldPt1 = enume1.Current;
+		Point2D oldPt1 = enum1.Current;
 
 		// On calcule la position relative des deux courbes
 		int relativePosition = 0;
@@ -105,6 +137,36 @@ public class FuzzySet
 			}
 		}
 
+		return result;
+	}
+
+	public static Boolean operator == (FuzzySet fs1, FuzzySet fs2)
+	{
+		return fs1.ToString().Equals(fs2.ToString());
+	}
+
+	public static Boolean operator != (FuzzySet fs1, FuzzySet fs2)
+	{
+		return !(fs1 == fs2);
+	}
+
+	public static FuzzySet operator *(FuzzySet fs, double value)
+	{
+		FuzzySet result = new FuzzySet(fs.min, fs.Max);
+		foreach (Point2D pt in fs.Points)
+		{
+			result.Add(new Point2D(pt.X, pt.Y * value));;
+		}
+		return result;
+	}
+
+	public static FuzzySet operator !(FuzzySet fs)
+	{
+		FuzzySet result = new FuzzySet(fs.Min, fs.Max);
+		foreach (Point2D pt in fs.Points)
+		{
+			result.Add(new Point2D(pt.X, 1 - pt.Y));
+		}
 		return result;
 	}
 
