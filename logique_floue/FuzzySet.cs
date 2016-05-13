@@ -80,7 +80,32 @@ public class FuzzySet
 				oldPt1 = enum1.Current;
 				endOfList1 = !(enum1.MoveNext());
 			}
+			else
+			{
+				// Ce coup-ci, c'est la courbe2
+				result.Add(x2, MergeFt(fs1.DegreeAtValue(x2), enum2.Current.Y));
+				endOfList2 = !(enum2.MoveNext());
+			}
 		}
+		// Une des deux listes est finie, on ajoute les points restants
+		if (!endOfList1)
+		{
+			while (!endOfList1)
+			{
+				result.Add(enum1.Current.X, MergeFt(0, enum1.Current.Y));
+				endOfList1 = !(enum1.MoveNext());
+			}
+		}
+		else if (!endOfList2)
+		{
+			while (!endOfList2)
+			{
+				result.Add(enum2.Current.X, MergeFt(0, enum2.Current.Y));
+				endoOfList2 = !(enum2.MoveNext());
+			}
+		}
+
+		return result;
 	}
 
 	public static FuzzySet operator &(FuzzySet fs1, FuzzySet fs2)
