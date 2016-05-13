@@ -1,0 +1,15 @@
+c:\users\vm_42_000\documents\visual studio 2013\Projects\FuzzyLogic\FuzzyLogicPCL\bin\Debug\FuzzyLogicPCL.dll
+c:\users\vm_42_000\documents\visual studio 2013\Projects\FuzzyLogic\FuzzyLogicPCL\bin\Debug\FuzzyLogicPCL.pdb
+c:\users\vm_42_000\documents\visual studio 2013\Projects\FuzzyLogic\FuzzyLogicPCL\obj\Debug\FuzzyLogicPCL.csprojResolveAssemblyReference.cache
+c:\users\vm_42_000\documents\visual studio 2013\Projects\FuzzyLogic\FuzzyLogicPCL\obj\Debug\FuzzyLogicPCL.dll
+c:\users\vm_42_000\documents\visual studio 2013\Projects\FuzzyLogic\FuzzyLogicPCL\obj\Debug\FuzzyLogicPCL.pdb
+E:\FuzzyLogic\FuzzyLogicPCL\bin\Debug\FuzzyLogicPCL.dll
+E:\FuzzyLogic\FuzzyLogicPCL\bin\Debug\FuzzyLogicPCL.pdb
+E:\FuzzyLogic\FuzzyLogicPCL\obj\Debug\FuzzyLogicPCL.csprojResolveAssemblyReference.cache
+E:\FuzzyLogic\FuzzyLogicPCL\obj\Debug\FuzzyLogicPCL.dll
+E:\FuzzyLogic\FuzzyLogicPCL\obj\Debug\FuzzyLogicPCL.pdb
+C:\Users\vm_42_000\Desktop\FuzzyLogic\FuzzyLogicPCL\bin\Debug\FuzzyLogicPCL.dll
+C:\Users\vm_42_000\Desktop\FuzzyLogic\FuzzyLogicPCL\bin\Debug\FuzzyLogicPCL.pdb
+C:\Users\vm_42_000\Desktop\FuzzyLogic\FuzzyLogicPCL\obj\Debug\FuzzyLogicPCL.csprojResolveAssemblyReference.cache
+C:\Users\vm_42_000\Desktop\FuzzyLogic\FuzzyLogicPCL\obj\Debug\FuzzyLogicPCL.dll
+C:\Users\vm_42_000\Desktop\FuzzyLogic\FuzzyLogicPCL\obj\Debug\FuzzyLogicPCL.pdb
