@@ -69,5 +69,29 @@ public class ZoomGPS
 		system.SetInputvariable(vitesse, 25);
 		system.SetInputVariable(distance, 70);
 		Console.WriteLine("Résultat : " + system.Solve() + "\n");
+
+		// Cas pratique 3 : vitesse de 72.5 km/h,
+		// et prochain changement de direction à 40 m
+		system.ResetCase();
+		Console.WriteLine("Cas 3 :");
+		system.SetInputVariable(vitesse, 72.5);
+		system.SetInputVariable(distance, 40);
+		Console.WriteLine("Résultat : " + system.Solve() + "\n");
+
+		// Cas pratique 4 : vitesse de 100 km/h,
+		// et prochain changement de direction à 110 m
+		system.ResetCase();
+		Console.WriteLine("Cas 4 :");
+		system.SetInputVariable(vitesse, 100);
+		system.SetInputVariable(distance, 110);
+		Console.WriteLine("Résultat : " + system.Solve() + "\n");
+
+		// Cas pratique 5 : vitesse de 45 km/h,
+		// et changement à 160 m
+		system.ResetCase();
+		Console.WriteLine("Cas 5 :");
+		system.SetInputVariable(vitesse, 45);
+		system.SetInputVariable(distance, 160);
+		Console.WriteLine("Résultat : " + system.Solve() + "\n");
 	}
 }
